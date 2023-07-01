@@ -8,6 +8,7 @@
    - [sh pre-install.sh, Running pre installation script]
    - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
    - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
+   - [git submodule update --init --recursive, Installing submodules]
 
 - link:
    ~/.dotfiles: ""
@@ -16,6 +17,3 @@
    ~/.zshrc:
     force: true
     path: zshrc
-
-- shell:
-   - [git submodule update --init --recursive, Installing submodules]
