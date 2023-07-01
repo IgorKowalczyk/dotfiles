@@ -1,0 +1,59 @@
+[alias]
+ pullff = pull --ff-only
+ ignore = update-index --assume-unchanged
+ ignore-not = update-index --no-assume-unchanged
+	graph = log --graph --oneline
+ tree = log --oneline --decorate --graph
+ ls = log --graph --pretty='%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]' --abbrev-commit --date=short
+ authors = shortlog -s -n -e
+
+[color]
+	ui = true
+
+[color "grep"]
+ match = cyan bold
+ selected = blue
+ context = normal
+ filename = magenta
+ linenumber = green
+ separator = yellow
+ function = blue
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+
+[color "diff"]
+	meta = 227
+	frag = magenta bold
+	commit = 227 bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[pretty]
+ line = "%C(auto)%h%d %s %C(yellow)by %C(blue)%an %C(green)%ar"
+ compact = "%C(auto)%h %s %C(green)%ar%n %C(auto)%d%n"
+ detail = "%C(auto)%h %s%n  %C(yellow)by %C(blue)%an %C(magenta)<%ae> [%G?] %C(green)%ar%n %C(auto)%d%n"
+
+[grep]
+ lineNumber = true
+
+[push]
+ default = upstream
+
+[include]
+ path = ~/.gitconfig.local
+
+[core]
+ excludesfile = ~/.gitignore
+ autocrlf = input
+ editor = nano
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

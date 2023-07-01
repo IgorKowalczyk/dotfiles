@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Check if oh-my-zsh is installed
 OMZDIR="$HOME/.oh-my-zsh"

@@ -8,12 +8,16 @@
    - [sh pre-install.sh, Running pre installation script]
    - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
    - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
+   - [mkdir -p $(dirname gitconfig.local) && touch gitconfig.local, Creating gitconfig.local file]
    - [git submodule update --init --recursive, Installing submodules]
 
 - link:
    ~/.dotfiles: ""
    ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions: "oh-my-zsh/custom/plugins/zsh-autosuggestions"
    ~/.oh-my-zsh/custom/plugins/zsh-autocomplete: "oh-my-zsh/custom/plugins/zsh-autocomplete"
+   ~/.gitignore:
+   ~/.gitconfig:
+   ~/.gitconfig.local: "gitconfig.local"
    ~/.zshrc:
     force: true
     path: zshrc
