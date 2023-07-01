@@ -7,7 +7,7 @@ if [ ! -d "$OMZDIR" ]; then
   /bin/sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 else
   echo 'Updating oh-my-zsh'
-  upgrade_oh_my_zsh
+  omz update
 fi
 
 # Check if nvm is installed
@@ -16,7 +16,7 @@ if [ ! -d "$NVM"]; then
    echo "Installing nvm"
    /bin/sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash)"
  else
-  echo "NVM Installed"
+  echo "NVM already installed"
 fi
 
 # Change default shell
