@@ -1,0 +1,21 @@
+- defaults:
+   link:
+    relink: true
+
+- clean: ["~", "~/.oh-my-zsh/custom/", "~/.oh-my-zsh/custom/plugins/"]
+
+- shell:
+   - [sh pre-install.sh, Running pre installation script]
+   - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
+   - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
+
+- link:
+   ~/.dotfiles: ""
+   ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions: "oh-my-zsh/custom/plugins/zsh-autosuggestions"
+   ~/.oh-my-zsh/custom/plugins/zsh-autocomplete: "oh-my-zsh/custom/plugins/zsh-autocomplete"
+   ~/.zshrc:
+    force: true
+    path: zshrc
+
+- shell:
+   - [git submodule update --init --recursive, Installing submodules]
