@@ -6,7 +6,6 @@
 
 [![GitHub License](https://img.shields.io/github/license/igorkowalczyk/dotfiles?color=%2334D058&logo=github&style=flat-square&label=License)](https://github.com/igorkowalczyk/dotfiles/blob/main/license.md)
 [![Version](https://img.shields.io/github/v/release/igorkowalczyk/dotfiles?color=%2334D058&logo=github&style=flat-square&label=Version)](https://github.com/igorkowalczyk/dotfiles/releases)
-[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/igorkowalczyk/dotfiles?color=%2334D058&logo=github&style=flat-square&label=Vulnerabilities)](https://github.com/igorkowalczyk/dotfiles)
 <br><br><br>
 
 ## ⚡️ Installation
