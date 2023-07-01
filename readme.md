@@ -12,7 +12,7 @@
 ## ⚡️ Installation
 
 > **Note**
-> If you have `~/gitconfig` file, please remove it before installation and paste your data to `~/dotfiles/gitconfig.local` file (it will be created after installation)
+> If you have `~/gitconfig` file, please remove it before installation and paste your data to `~/dotfiles/git/gitconfig.local` file (it will be created after installation)
 
 ```bash
 # Git clone with submodules
@@ -30,10 +30,11 @@ source ~/.zshrc
 
 # 📦 Content
 
-- `zshrc`: [Zsh](https://www.zsh.org/) config with [Oh My Zsh](https://ohmyz.sh/)
+- `zsh/zshrc`: [Zsh](https://www.zsh.org/) config with [Oh My Zsh](https://ohmyz.sh/)
 - `pre-install.sh`: [Node Version Manager](https://github.com/nvm-sh/nvm)
 - `oh-my-zsh/custom/plugins`: [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - `oh-my-zsh/custom/plugins`: [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
+- `git`: [Git](https://git-scm.com/) config
 - Aliases for `git`, `pnpm`, `nvm` and more
 
 ## ⁉️ Issues
