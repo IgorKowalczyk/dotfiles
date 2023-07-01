@@ -11,8 +11,7 @@
 
 ## ⚡️ Installation
 
-> **Note**
-> If you have `~/gitconfig` file, please remove it before installation and paste your data to `~/dotfiles/git/gitconfig.local` file (it will be created after installation)
+**Before you start**: If you have `~/.gitconfig` file, please copy and paste your data to `~/dotfiles/git/gitconfig.local` file (it will be created after installation). Don't forget to remove old `~/.gitconfig` file! This file will be automatically included in new `~/.gitconfig` file.
 
 ```bash
 # Git clone with submodules
@@ -30,12 +29,9 @@ source ~/.zshrc
 
 # 📦 Content
 
-- `zsh/zshrc`: [Zsh](https://www.zsh.org/) config with [Oh My Zsh](https://ohmyz.sh/)
-- `pre-install.sh`: [Node Version Manager](https://github.com/nvm-sh/nvm)
-- `oh-my-zsh/custom/plugins`: [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-- `oh-my-zsh/custom/plugins`: [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
-- `git`: [Git](https://git-scm.com/) config
-- Aliases for `git`, `pnpm`, `nvm` and more
+- `zsh/` - [Zsh](https://www.zsh.org/) config with [Oh My Zsh](https://ohmyz.sh/), includes aliases for Docker, Debian, NVM (Node Version Manager) and [TheFuck](https://github.com/nvbn/thefuck)
+- `oh-my-zsh/` - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) plugins.
+- `git/` - [Git](https://git-scm.com/) config with [git-extras](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git-extras/git-extras.plugin.zsh) and alliases.
 
 ## ⁉️ Issues
 

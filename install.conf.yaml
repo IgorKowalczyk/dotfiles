@@ -8,7 +8,7 @@
    - [sh pre-install.sh, Running pre installation script]
    - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
    - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
-   - [cd git && mkdir -p $(dirname gitconfig.local) && touch gitconfig.local, Creating gitconfig.local file]
+   - [cd git && mkdir -p $(dirname gitconfig.local) && touch gitconfig.local, Creating git/gitconfig.local file]
    - [git submodule update --init --recursive, Installing submodules]
 
 - link:

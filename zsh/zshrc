@@ -6,12 +6,12 @@ ZSH_THEME="gentoo"
 # update automatically without asking
 zstyle ':omz:update' mode auto
 
-plugins=(git git-extras nvm docker npm zsh-autosuggestions)
+plugins=(git nvm npm docker debian zsh-autosuggestions command-not-found)
 
 # source oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# pnpm
+# pnpm (node package manager)
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
