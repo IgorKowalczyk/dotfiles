@@ -1,0 +1,6 @@
+{
+ "extends": ["github>igorkowalczyk/shared-configs//packages/renovate-config/index.json"],
+ "git-submodules": {
+  "enabled": true
+ }
+}
