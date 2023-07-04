@@ -44,6 +44,9 @@
 [push]
  default = upstream
 
+[pull]
+	rebase = true
+
 [include]
  path = ~/.gitconfig.local
 
