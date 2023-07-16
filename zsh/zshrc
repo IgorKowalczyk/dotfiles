@@ -23,6 +23,10 @@ alias pnmp=pnpm
 alias pmpn=pnpm
 alias pnpp=pnpm
 
+# deno
+export DENO_INSTALL="/home/igor/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
