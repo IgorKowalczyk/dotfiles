@@ -17,11 +17,22 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+# PNPM Aliases, everyone makes mistakes
 alias ppnm=pnpm
 alias pmnp=pnpm
 alias pnmp=pnpm
 alias pmpn=pnpm
 alias pnpp=pnpm
+alias pmpm=pnpm
+alias pnnm=pnpm
+alias pnpmn=pnpm
+alias pnm=pnpm
+alias pmp=pnpm
+alias pnml=pnpm
+alias pnmu=pnpm
+alias pnnp=pnpm
+alias pnbm=pnpm
 
 # deno
 export DENO_INSTALL="/home/igor/.deno"

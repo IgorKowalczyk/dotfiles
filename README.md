@@ -23,7 +23,7 @@ source ~/.zshrc
 
 ```
 
-> **Warning**:
+> [!WARNING]
 > Script will install [Zsh](https://www.zsh.org/) with [Oh My Zsh](https://ohmyz.sh/) and [Node Version Manager](https://github.com/nvm-sh/nvm) if not installed.
 
 # 📦 Content
