@@ -1,12 +1,15 @@
-<img width="170" height="170" align="left" style="float: left; margin: 0 10px 0 0; border-radius: 50%;" src="https://media.discordapp.net/attachments/710425657003212810/933327129305821184/circle.png">
+![Dotfiles](https://github.com/IgorKowalczyk/dotfiles/assets/49127376/9747b962-2c1b-4eb9-a0ea-3ddb5b1d3923)
 
-## Igor Kowalczyk - `~/.dotfiles`
+<div align="center">
+  <a aria-label="GitHub License" href="https://github.com/igorkowalczyk/dotfiles/blob/main/license.md">
+    <img src="https://img.shields.io/github/license/igorkowalczyk/dotfiles?color=%2334D058&logo=github&style=flat-square&label=License">
+  </a>
+  <a aria-label="Version" href="https://github.com/igorkowalczyk/dotfiles/releases">
+    <img src="https://img.shields.io/github/v/release/igorkowalczyk/dotfiles?color=%2334D058&logo=github&style=flat-square&label=Version">
+  </a>
+</div>
 
-> 📦 All my `~/.dotfiles` for Linux. Managed by [Dotbot](https://github.com/anishathalye/dotbot)
-
-[![GitHub License](https://img.shields.io/github/license/igorkowalczyk/dotfiles?color=%2334D058&logo=github&style=flat-square&label=License)](https://github.com/igorkowalczyk/dotfiles/blob/main/license.md)
-[![Version](https://img.shields.io/github/v/release/igorkowalczyk/dotfiles?color=%2334D058&logo=github&style=flat-square&label=Version)](https://github.com/igorkowalczyk/dotfiles/releases)
-<br><br><br>
+---
 
 ## ⚡️ Installation
 
