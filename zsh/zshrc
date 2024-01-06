@@ -5,6 +5,7 @@ ZSH_THEME="gentoo"
 
 # update automatically without asking
 zstyle ':omz:update' mode auto
+zstyle ':omz:update' verbose minimal
 
 plugins=(git nvm npm docker debian zsh-autosuggestions command-not-found)
 
@@ -54,9 +55,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# Fuck it! Fix it!
-eval $(thefuck --alias)
-
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
@@ -64,4 +62,8 @@ eval $(thefuck --alias)
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# Configure atuin
 eval "$(atuin init zsh)"
+
+# Fuck it! Fix it!
+eval "$(thefuck --alias)"
