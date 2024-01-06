@@ -33,6 +33,9 @@ alias pnml=pnpm
 alias pnmu=pnpm
 alias pnnp=pnpm
 alias pnbm=pnpm
+alias pnb=pnpm
+alias pnbu=pnpm
+alias pnbm=pnpm
 
 # deno
 export DENO_INSTALL="/home/igor/.deno"
@@ -60,3 +63,5 @@ eval $(thefuck --alias)
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+eval "$(atuin init zsh)"

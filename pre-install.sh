@@ -1,28 +1,31 @@
 #!/usr/bin/env bash
 
+BLUE=$(printf '\033[34m')
+GREEN=$(printf '\033[32m')
+RESET=$(printf '\033[0m')
+
+# Change default shell
+if [ ! $SHELL = "/usr/bin/zsh" ]; then
+  echo "${BLUE}Changing default shell to zsh${RESET}"
+  chsh -s /bin/zsh
+else
+  echo "${GREEN}Already using ZSH${RESET}"
+fi
+
 # Check if oh-my-zsh is installed
 OMZDIR="$HOME/.oh-my-zsh"
 if [ ! -d "$OMZDIR" ]; then
-  echo 'Installing oh-my-zsh'
+  echo "${BLUE}Installing oh-my-zsh${RESET}"
   /bin/sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 else
-  echo 'Updating oh-my-zsh'
-  omz update
+  echo "${GREEN}oh-my-zsh already installed${RESET}"
 fi
 
 # Check if nvm is installed
 NVM="$HOME/.nvm"
-if [ ! -d "$NVM"]; then
-   echo "Installing nvm"
+if [ ! -d "$NVM" ]; then
+   echo "${BLUE}Installing nvm${RESET}"
    /bin/sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash)"
  else
-  echo "NVM already installed"
-fi
-
-# Change default shell
-if [! $0 = "-zsh"]; then
-  echo 'Changing default shell to zsh'
-  chsh -s /bin/zsh
-else
-  echo 'Already using zsh'
+  echo "${GREEN}NVM already installed${RESET}"
 fi

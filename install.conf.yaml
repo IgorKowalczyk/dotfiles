@@ -1,6 +1,9 @@
 - defaults:
    link:
     relink: true
+   shell:
+    stderr: true
+    stdout: true
 
 - clean: ["~", "~/.oh-my-zsh/custom/", "~/.oh-my-zsh/custom/plugins/"]
 
