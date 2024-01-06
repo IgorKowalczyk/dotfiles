@@ -63,7 +63,8 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Configure atuin
+
 eval "$(atuin init zsh)"
 
-# Fuck it! Fix it!
-eval "$(thefuck --alias)"
+# Fuck it! Fix it! (Not now)
+# eval "$(thefuck --alias)"
