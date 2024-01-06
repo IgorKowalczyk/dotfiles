@@ -34,6 +34,7 @@ source ~/.zshrc
 - `zsh/` - [Zsh](https://www.zsh.org/) config with [Oh My Zsh](https://ohmyz.sh/), includes aliases for Docker, Debian, NVM (Node Version Manager) and [TheFuck](https://github.com/nvbn/thefuck)
 - `oh-my-zsh/` - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) plugins.
 - `git/` - [Git](https://git-scm.com/) config with [git-extras](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git-extras/git-extras.plugin.zsh) and alliases.
+- `dotbot/` - [Dotbot](https://github.com/anishathalye/dotbot) repository
 
 ## ⁉️ Issues
 
