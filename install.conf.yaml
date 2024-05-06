@@ -21,6 +21,8 @@
    ~/.gitignore: "git/gitignore"
    ~/.gitconfig: "git/gitconfig"
    ~/.gitconfig.local: "git/gitconfig.local"
+   ~/.config/fastfetch: "config/fastfetch"
+   ~/.config/turborepo: "config/turborepo"
    ~/.zshrc:
     force: true
     path: "zsh/zshrc"

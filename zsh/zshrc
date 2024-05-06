@@ -38,6 +38,9 @@ alias pnb=pnpm
 alias pnbu=pnpm
 alias pnbm=pnpm
 
+# alias for fastfetch (neofetch alternative)
+alias neofetch="fastfetch"
+
 # deno
 export DENO_INSTALL="/home/igor/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
