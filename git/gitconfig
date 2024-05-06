@@ -47,9 +47,6 @@
 [pull]
 	rebase = true
 
-[include]
- path = ~/.gitconfig.local
-
 [core]
  excludesfile = ~/.gitignore
  autocrlf = input
@@ -60,3 +57,6 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+
+[include]
+ path = ~/.gitconfig.local

@@ -4,6 +4,14 @@ BLUE=$(printf '\033[34m')
 GREEN=$(printf '\033[32m')
 RESET=$(printf '\033[0m')
 
+# Check if .gitconfig exists, if so - copy it to gitconfig.local
+# if [ -f "$HOME/.gitconfig" ]; then
+#   echo "${BLUE}Copying .gitconfig to .gitconfig.local${RESET}"
+#   cp "$HOME/.gitconfig" "$HOME/.gitconfig.local"
+# else
+#   echo "${GREEN}.gitconfig not found${RESET}"
+# fi
+
 # Change default shell
 if [ ! $SHELL = "/usr/bin/zsh" ]; then
   echo "${BLUE}Changing default shell to zsh${RESET}"
@@ -21,9 +29,15 @@ else
   echo "${GREEN}oh-my-zsh already installed${RESET}"
 fi
 
-# Install atuin
-bash -c "$(curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh)"
-atuin login
+# Check if atuin is installed
+ATUINDIR="$HOME/.config/atuin"
+
+if [ ! -d "$ATUINDIR" ]; then
+  echo "${BLUE}Installing atuin${RESET}"
+  bash -c "$(curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh)"
+else
+  echo "${GREEN}atuin already installed${RESET}"
+fi
 
 # Check if nvm is installed
 NVM="$HOME/.nvm"
