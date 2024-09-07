@@ -5,6 +5,7 @@ RESET=$(printf '\033[0m')
 
 # Install required packages for Fedora
 echo "${BLUE}Installing required packages for Fedora${RESET}"
+sudo dnf copr enable solopasha/hyprland -y
 sudo dnf install -y zsh git curl hyprland hyprshot rofi waybar cava dunst fastfetch kvantum-qt5 wofi pamixer btop swappy plasma-discover pavucontrol blueman konsole NetworkManager-tui filelight
 
 # Check if .gitconfig exists and .gitconfig.local does not exist, if so - copy it to gitconfig.local and remove it
