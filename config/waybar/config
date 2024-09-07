@@ -1,0 +1,162 @@
+{
+ "layer": "top",
+ "height": 40,
+ "spacing": 5,
+ "margin-right": 10,
+ "margin-left": 10,
+ "modules-left": [
+  "hyprland/workspaces",
+  "hyprland/window"
+ ],
+ "modules-center": [
+  "clock"
+ ],
+ "modules-right": [
+  "custom/updates",
+  "tray",
+  "temperature",
+  "load",
+  "disk",
+  "memory",
+  "pulseaudio",
+  "bluetooth",
+  "battery",
+  "custom/power"
+ ],
+ "hyprland/workspaces": {
+  "disable-scroll": false,
+  "all-outputs": false,
+  "on-click": "",
+  "persistent-workspaces": {
+   "1": [],
+   "2": [],
+   "3": [],
+   "4": [],
+   "5": []
+  }
+ },
+ "hyprland/window": {
+  "separate-outputs": true,
+  "icon": true,
+  "icon-size": 21,
+  "max-length": 50,
+  "rewrite": {
+   "(.*) - Brave": "$1",
+   "(.*) - fish": "> [$1]"
+  }
+ },
+ "tray": {
+  "icon-size": 21,
+  "show-passive-items": true,
+  "spacing": 10
+ },
+ "custom/updates": {
+  "exec": "~/.local/bin/updates",
+  "format": "󰏔 {} updates",
+  "interval": 600,
+  "on-click": "plasma-discover --mode Update"
+ },
+ "clock": {
+  "tooltip-format": "<big>{:%Y %B}</big>\n\n<tt>{calendar}</tt>",
+  "format": "  {:%H:%M |   %a, %b %d}",
+  "calendar": {
+   "mode": "year",
+   "mode-mon-col": 3,
+   "weeks-pos": "right",
+   "on-scroll": 1,
+   "format": {
+    "months": "<span color='#89b4fa'><b>{}</b></span>",
+    "days": "<span color='#cdd6f4'>{}</span>",
+    "weeks": "<span color='#7f849c'><b>W{}</b></span>",
+    "weekdays": "<span color='#b4befe'><b>{}</b></span>",
+    "today": "<span color='#f38ba8'><b><u>{}</u></b></span>"
+   }
+  }
+ },
+ "battery": {
+  "interval": 5,
+  "states": {
+   "good": 95,
+   "warning": 30
+  },
+  "format": "{icon} {capacity}%",
+  "format-charging": "󰂄 {capacity}%",
+  "format-plugged": "󰂄 {capacity}%",
+  "format-icons": [
+   "󰂎",
+   "󰁺",
+   "󰁻",
+   "󰁼",
+   "󰁽",
+   "󰁾",
+   "󰁿",
+   "󰂀",
+   "󰂁",
+   "󰂂",
+   "󰁹"
+  ],
+  "tooltip-format": "{timeTo} | {health}% health"
+ },
+ "temperature": {
+  "critical-threshold": 50,
+  "format": "{icon} {temperatureC}°C CPU",
+  "format-icons": [
+   "",
+   "",
+   ""
+  ],
+  "tooltip": true
+ },
+ "load": {
+  "interval": 1,
+  "format": "  {load1}%",
+  "max-length": 10
+ },
+ "disk": {
+  "interval": 300,
+  "format": "󰋊 {free}",
+  "path": "/",
+  "on-click": "filelight"
+ },
+ "memory": {
+  "interval": 5,
+  "format": "  {used:0.1f}G",
+  "tooltip-format": "{used:0.1f}G/{total:0.1f}G ({percentage}% used)"
+ },
+ "network": {
+  "tooltip": false,
+  "format-wifi": "󰖩  {essid}",
+  "format-disconnected": "󰖪",
+  "format-ethernet": "󰈀 Eth",
+  "max-length": 25,
+  "on-click": "konsole -e nmtui"
+ },
+ "pulseaudio": {
+  "format": "󰕾 {volume}%",
+  "format-muted": "󰖁 {volume}%",
+  "on-click": "pavucontrol -t 3",
+  "on-scroll-up": "~/.local/bin/changevolume up",
+  "on-scroll-down": "~/.local/bin/changevolume down",
+  "scroll-step": 5
+ },
+ "bluetooth": {
+  "format": "󰂲",
+  "format-disabled": "󰂲",
+  "format-connected": "󰂯 {num_connections}",
+  "tooltip-format": "󰂯 {device_alias}",
+  "tooltip-format-connected": "{device_enumerate}",
+  "tooltip-format-enumerate-connected": "󰂯 {device_alias}",
+  "on-click": "blueman-manager"
+ },
+ "custom/power": {
+  "format": "󰤆",
+  "on-click": "~/.local/bin/powermenu"
+ },
+ "custom/media": {
+  "format": "{icon} {}",
+  "return-type": "json",
+  "max-length": 15,
+  "escape": true,
+  "exec": "~/.local/bin/waybar-media.py 2> /dev/null"
+ }
+}

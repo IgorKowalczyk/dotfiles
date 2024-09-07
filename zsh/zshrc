@@ -12,13 +12,6 @@ plugins=(git nvm npm docker debian zsh-autosuggestions command-not-found)
 # source oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# pnpm (node package manager)
-export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
 # PNPM Aliases, everyone makes mistakes
 alias ppnm=pnpm
 alias pmnp=pnpm
@@ -42,7 +35,7 @@ alias pnbm=pnpm
 alias neofetch="fastfetch"
 
 # deno
-export DENO_INSTALL="/home/igor/.deno"
+export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 # nvm
@@ -51,7 +44,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Git GPG Key
-export GPG_TTY=\$(tty)
+export GPG_TTY=$(tty)
+
+# corepack
+export COREPACK_ENABLE_STRICT=0
+
 
 # Fix $PATH
 if [ -d "$HOME/.local/bin" ] ; then
@@ -67,3 +64,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Configure atuin
 eval "$(atuin init zsh)"
+
+
+# Add console-ninja to path [Visual Studio Code Extension]
+PATH=~/.console-ninja/.bin:$PATH
+export PATH=$HOME/.local/bin:$PATH

@@ -11,9 +11,19 @@
 
 ---
 
-## ⚡️ Installation
+## 🛠️ Installation
 
 **Before you start**: If you have `~/.gitconfig` file, please copy and paste your data to `~/dotfiles/git/gitconfig.local` file (it will be created after installation). Don't forget to remove old `~/.gitconfig` file! This file will be automatically included in new `~/.gitconfig` file.
+
+### 1. 🐧 Install required packages
+
+#### 🎩 Fedora
+
+```bash
+sudo dnf install zsh git curl hyprland hyprshot rofi waybar cava dunst fastfetch kvantum-qt5 wofi pamixer btop swappy plasma-discover pavucontrol blueman-manager konsole nmtui filelight
+```
+
+### 2. 🚀 Install
 
 ```bash
 # Git clone with submodules
@@ -24,13 +34,25 @@ cd dotfiles && ./install.sh
 
 source ~/.zshrc
 
-```
+# Install Hyprspace
+hyprpm add https://github.com/KZDKM/Hyprspace
+hyprpm enable Hyprspace
 
-> [!WARNING]
-> Script will install [Zsh](https://www.zsh.org/) with [Oh My Zsh](https://ohmyz.sh/) and [Node Version Manager](https://github.com/nvm-sh/nvm) if not installed.
+```
 
 # 📦 Content
 
+- `config/` - Config files for:
+  - `btop/` - [btop](https://github.com/aristocratos/btop) config, a monitor for resources
+  - `cava/` - [cava](https://github.com/karlstav/cava) config, an audio visualizer
+  - `dunst/` - [dunst](https://dunst-project.org/) config, a lightweight notification-daemon
+  - `fastfetch/` - [fastfetch](https://github.com/fastfetch-cli/fastfetch) config, a system information tool
+  - `hypr/` - [Hyprland(](https://hyprland.org/) config, tiling compositor with the looks
+  - `Kvantum/` - [Kvantum](https://github.com/tsujan/Kvantum/tree/master) config, SVG-based theme engine for Qt4/Qt5, KDE and LXQt
+  - `rofi/` - [Rofi](https://github.com/davatorium/rofi) config, application launcher
+  - `turborepo/` - [turborepo](https://turbo.build/) config, a build system for monorepos
+  - `waybar/` - [Waybar](https://github.com/Alexays/Waybar) config, a highly customizable bar
+  - `wofi/` - [Wofi](https://hg.sr.ht/~scoopta/wofi) config, a launcher apps
 - `zsh/` - [Zsh](https://www.zsh.org/) config with [Oh My Zsh](https://ohmyz.sh/), includes aliases for Docker, Debian, NVM (Node Version Manager) and [TheFuck](https://github.com/nvbn/thefuck)
 - `oh-my-zsh/` - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) plugins.
 - `git/` - [Git](https://git-scm.com/) config with [git-extras](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git-extras/git-extras.plugin.zsh) and alliases.

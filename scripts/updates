@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Count the number of available updates on Fedora (via dnf).
+
+if ! updates_system=$(dnf check-update | grep -Ec '\s+updates\s*$' 2> /dev/null); then
+    updates_system=0
+fi
+
+if [ "$updates_system" -gt 0 ]; then
+    echo "$updates_system"
+else
+    echo ""
+fi
