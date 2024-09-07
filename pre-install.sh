@@ -7,15 +7,16 @@ RESET=$(printf '\033[0m')
 echo "${BLUE}Installing required packages for Fedora${RESET}"
 sudo dnf install -y zsh git curl hyprland hyprshot rofi waybar cava dunst fastfetch kvantum-qt5 wofi pamixer btop swappy plasma-discover pavucontrol blueman konsole NetworkManager-tui filelight
 
-# Check if .gitconfig exists, if so - copy it to gitconfig.local
-if [ -f "$HOME/.gitconfig" ]; then
+# Check if .gitconfig exists and .gitconfig.local does not exist, if so - copy it to gitconfig.local and remove it
+if [ -f "$HOME/.gitconfig" ] && [ ! -f "$HOME/.gitconfig.local" ]; then
   echo "${BLUE}Copying .gitconfig to gitconfig.local${RESET}"
-  touch "$HOME/dotfiles/git/gitconfig.local"
+  mkdir -p "$HOME/dotfiles/git"
   cp "$HOME/.gitconfig" "$HOME/dotfiles/git/gitconfig.local"
   rm "$HOME/.gitconfig"
 else
-  echo "${GREEN}.gitconfig not found${RESET}"
+  echo "${GREEN}.gitconfig.local already exists or .gitconfig does not exist${RESET}"
 fi
+
 
 # Change default shell
 if [ ! $SHELL = "/usr/bin/zsh" ]; then

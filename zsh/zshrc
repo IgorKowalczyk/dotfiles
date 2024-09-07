@@ -58,12 +58,16 @@ fi
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
+# gh-cli completions
+eval $(gh completion --shell zsh)
+
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Configure atuin
 eval "$(atuin init zsh)"
+. "$HOME/.atuin/bin/env"
 
 
 # Add console-ninja to path [Visual Studio Code Extension]

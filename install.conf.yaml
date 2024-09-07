@@ -9,18 +9,29 @@
 
 - shell:
    - [sh pre-install.sh, Running pre installation script]
-   - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
-   - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
    - [git submodule update --init --recursive, Installing submodules]
 
+- create:
+   - ~/.config/
+   - ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/
+   - ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/
+
 - link:
-   ~/.dotfiles: ""
    ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions: "oh-my-zsh/custom/plugins/zsh-autosuggestions"
    ~/.oh-my-zsh/custom/plugins/zsh-autocomplete: "oh-my-zsh/custom/plugins/zsh-autocomplete"
    ~/.gitignore: "git/gitignore"
    ~/.gitconfig: "git/gitconfig"
    ~/.gitconfig.local: "git/gitconfig.local"
-   ~/.config: "config"
+   ~/.config/btop: "config/btop"
+   ~/.config/cava: "config/cava"
+   ~/.config/dunst: "config/dunst"
+   ~/.config/fastfetch: "config/fastfetch"
+   ~/.config/hypr: "config/hypr"
+   ~/.config/Kvantum: "config/Kvantum"
+   ~/.config/rofi: "config/rofi"
+   ~/.config/turborepo: "config/turborepo"
+   ~/.config/waybar: "config/waybar"
+   ~/.config/wofi: "config/wofi"
    ~/.zshrc:
     force: true
     path: "zsh/zshrc"
