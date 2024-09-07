@@ -30,7 +30,7 @@ sudo dnf install zsh git curl hyprland hyprshot rofi waybar cava dunst fastfetch
 git clone --recurse-submodules https://github.com/igorkowalczyk/dotfiles
 
 # Run install script
-cd dotfiles && ./install.sh
+cd dotfiles && ./install
 
 source ~/.zshrc
 

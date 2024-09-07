@@ -10,6 +10,7 @@ sudo dnf install -y zsh git curl hyprland hyprshot rofi waybar cava dunst fastfe
 # Check if .gitconfig exists, if so - copy it to gitconfig.local
 if [ -f "$HOME/.gitconfig" ]; then
   echo "${BLUE}Copying .gitconfig to gitconfig.local${RESET}"
+  touch "$HOME/dotfiles/git/gitconfig.local"
   cp "$HOME/.gitconfig" "$HOME/dotfiles/git/gitconfig.local"
   rm "$HOME/.gitconfig"
 else
