@@ -11,11 +11,6 @@
    - [sh pre-install.sh, Running pre installation script]
    - [git submodule update --init --recursive, Installing submodules]
 
-- create:
-   - ~/.config/
-   - ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/
-   - ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/
-
 - link:
    ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions: "oh-my-zsh/custom/plugins/zsh-autosuggestions"
    ~/.oh-my-zsh/custom/plugins/zsh-autocomplete: "oh-my-zsh/custom/plugins/zsh-autocomplete"

@@ -49,6 +49,7 @@ echo "${BLUE}Installing atuin${RESET}"
 curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 
 echo "${BLUE}Enabling Hyprspace and hyprexpo${RESET}"
+hyprpm update
 hyprpm add https://github.com/KZDKM/Hyprspace
 hyprpm enable Hyprspace
 hyprpm enable hyprexpo
