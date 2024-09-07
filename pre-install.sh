@@ -5,7 +5,7 @@ RESET=$(printf '\033[0m')
 
 # Install required packages for Fedora
 echo "${BLUE}Installing required packages for Fedora${RESET}"
-sudo dnf install -y zsh git curl hyprland hyprshot rofi waybar cava dunst fastfetch kvantum-qt5 wofi pamixer btop swappy plasma-discover pavucontrol blueman-manager konsole nmtui filelight
+sudo dnf install -y zsh git curl hyprland hyprshot rofi waybar cava dunst fastfetch kvantum-qt5 wofi pamixer btop swappy plasma-discover pavucontrol blueman konsole NetworkManager-tui filelight
 
 # Check if .gitconfig exists, if so - copy it to gitconfig.local
 if [ -f "$HOME/.gitconfig" ]; then
@@ -33,3 +33,6 @@ if [ ! -d "$OMZDIR" ]; then
 else
   echo "${GREEN}oh-my-zsh is already installed${RESET}"
 fi
+
+echo "${BLUE}Installing atuin${RESET}"
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh

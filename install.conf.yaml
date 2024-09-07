@@ -11,7 +11,6 @@
    - [sh pre-install.sh, Running pre installation script]
    - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
    - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
-   - [cd git && mkdir -p $(dirname gitconfig.local) && touch gitconfig.local, Creating git/gitconfig.local file]
    - [git submodule update --init --recursive, Installing submodules]
 
 - link:
@@ -21,8 +20,7 @@
    ~/.gitignore: "git/gitignore"
    ~/.gitconfig: "git/gitconfig"
    ~/.gitconfig.local: "git/gitconfig.local"
-   ~/.config/fastfetch: "config/fastfetch"
-   ~/.config/turborepo: "config/turborepo"
+   ~/.config: "config"
    ~/.zshrc:
     force: true
     path: "zsh/zshrc"
