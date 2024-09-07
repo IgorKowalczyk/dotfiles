@@ -5,7 +5,7 @@
     stderr: true
     stdout: true
 
-- clean: ["~", "~/.oh-my-zsh/custom/", "~/.oh-my-zsh/custom/plugins/"]
+- clean: ["~"]
 
 - shell:
    - [sh pre-install.sh, Running pre installation script]
