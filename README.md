@@ -13,18 +13,6 @@
 
 ## 🛠️ Installation
 
-**Before you start**: If you have `~/.gitconfig` file, please copy and paste your data to `~/dotfiles/git/gitconfig.local` file (it will be created after installation). Don't forget to remove old `~/.gitconfig` file! This file will be automatically included in new `~/.gitconfig` file.
-
-### 1. 🐧 Install required packages
-
-#### 🎩 Fedora
-
-```bash
-sudo dnf install zsh git curl hyprland hyprshot rofi waybar cava dunst fastfetch kvantum-qt5 wofi pamixer btop swappy plasma-discover pavucontrol blueman-manager konsole nmtui filelight
-```
-
-### 2. 🚀 Install
-
 ```bash
 # Git clone with submodules
 git clone --recurse-submodules https://github.com/igorkowalczyk/dotfiles
@@ -33,10 +21,6 @@ git clone --recurse-submodules https://github.com/igorkowalczyk/dotfiles
 cd dotfiles && ./install
 
 source ~/.zshrc
-
-# Install Hyprspace
-hyprpm add https://github.com/KZDKM/Hyprspace
-hyprpm enable Hyprspace
 
 ```
 

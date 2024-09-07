@@ -6,6 +6,9 @@ RESET=$(printf '\033[0m')
 # Install required packages for Fedora
 echo "${BLUE}Installing required packages for Fedora${RESET}"
 sudo dnf copr enable solopasha/hyprland -y
+sudo dnf install 'dnf-command(config-manager)' -y
+sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo -y
+sudo dnf install gh --repo gh-cli -y
 sudo dnf install -y zsh git curl hyprland hyprshot rofi waybar cava dunst fastfetch kvantum-qt5 wofi pamixer btop swappy plasma-discover pavucontrol blueman konsole NetworkManager-tui filelight
 
 # Check if .gitconfig exists and .gitconfig.local does not exist, if so - copy it to gitconfig.local and remove it
@@ -44,3 +47,8 @@ fi
 
 echo "${BLUE}Installing atuin${RESET}"
 curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+
+echo "${BLUE}Enabling Hyprspace and hyprexpo${RESET}"
+hyprpm add https://github.com/KZDKM/Hyprspace
+hyprpm enable Hyprspace
+hyprpm enable hyprexpo
