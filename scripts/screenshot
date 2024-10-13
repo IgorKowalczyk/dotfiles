@@ -1,3 +1,0 @@
-hyprshade off
-hyprshot --freeze --mode=region --raw --clipboard-only | swappy -f -
-hyprshade auto

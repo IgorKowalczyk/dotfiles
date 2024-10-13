@@ -50,7 +50,7 @@ export GPG_TTY=$(tty)
 export COREPACK_ENABLE_STRICT=0
 
 
-# Fix $PATH
+# Add local bin to path
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
@@ -73,3 +73,6 @@ eval "$(atuin init zsh)"
 # Add console-ninja to path [Visual Studio Code Extension]
 PATH=~/.console-ninja/.bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+
+# Add flatpak to path (Fixes flatpak throwing errors while updating)
+export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:$XDG_DATA_DIRS
