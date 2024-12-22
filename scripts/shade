@@ -1,0 +1,86 @@
+#! /bin/sh
+
+# Configuration
+DEFAULT_TEMP=6000  # Daytime temperature (K)
+NIGHT_TEMP=4500    # Nighttime temperature (K)
+SUNSET_TIME="20:00"  # Sunset time (hh:mm)
+SUNRISE_TIME="06:00" # Sunrise time (hh:mm)
+TEMP_STEP=500      # Temperature change every 5 minutes (K)
+GRADUAL_INTERVAL=5   # Interval for temperature changes (in minutes)
+
+time_to_minutes() {
+    IFS=: read -r hour minute <<<"$1"
+    echo $((hour * 60 + minute))
+}
+
+calculate_temp() {
+    local current_time=$1
+    local current_minutes=$(time_to_minutes "$current_time")
+    local sunset_minutes=$(time_to_minutes "$SUNSET_TIME")
+    local sunrise_minutes=$(time_to_minutes "$SUNRISE_TIME")
+    local total_day_minutes=1440
+
+    # If it's day, the temperature is DEFAULT_TEMP
+    if ((current_minutes < sunset_minutes)); then
+        echo $DEFAULT_TEMP
+    else
+        # If it's night, the temperature is NIGHT_TEMP
+        local night_start_minutes=$((sunset_minutes))
+        local night_end_minutes=$((sunrise_minutes))
+
+        # If sunrise is after sunset, handle the day-to-night transition over midnight
+        if ((sunrise_minutes < sunset_minutes)); then
+            night_end_minutes=$((sunrise_minutes + total_day_minutes))
+        fi
+
+        local target_temp
+        if ((current_minutes >= night_start_minutes && current_minutes < night_end_minutes)); then
+            # Night: Transition from day to night
+            target_temp=$NIGHT_TEMP
+        else
+            # Day: Transition from night to day
+            target_temp=$DEFAULT_TEMP
+        fi
+
+        local elapsed_minutes
+        if ((current_minutes >= night_start_minutes)); then
+            elapsed_minutes=$((current_minutes - night_start_minutes))
+        else
+            elapsed_minutes=$((current_minutes + total_day_minutes - night_start_minutes))
+        fi
+
+        local temp_diff=$((DEFAULT_TEMP - NIGHT_TEMP))
+        local total_steps=$((temp_diff / TEMP_STEP))
+
+        local current_temp
+        if ((target_temp == NIGHT_TEMP)); then
+            # Temperature change during the night
+            current_temp=$((DEFAULT_TEMP - (elapsed_minutes / GRADUAL_INTERVAL) * TEMP_STEP))
+            if ((current_temp < NIGHT_TEMP)); then
+                current_temp=$NIGHT_TEMP
+            fi
+        else
+            # Temperature change during the day
+            current_temp=$((NIGHT_TEMP + (elapsed_minutes / GRADUAL_INTERVAL) * TEMP_STEP))
+            if ((current_temp > DEFAULT_TEMP)); then
+                current_temp=$DEFAULT_TEMP
+            fi
+        fi
+
+        echo $current_temp
+    fi
+}
+
+while true; do
+
+    pkill -9 -x hyprsunset
+
+    current_time=$(date +"%H:%M")
+    temperature=$(calculate_temp "$current_time")
+
+    echo "Setting temperature to ${temperature}K at $current_time"
+
+    hyprsunset -t "$temperature" &
+
+    sleep $((GRADUAL_INTERVAL * 60))
+done
