@@ -1,16 +1,50 @@
+/* Catppuccin Mocha */
+@define-color base   #1e1e2e;
+@define-color mantle #181825;
+@define-color crust  #11111b;
+
+@define-color text     #cdd6f4;
+@define-color subtext0 #a6adc8;
+@define-color subtext1 #bac2de;
+
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color surface2 #585b70;
+
+@define-color overlay0 #6c7086;
+@define-color overlay1 #7f849c;
+@define-color overlay2 #9399b2;
+
+@define-color blue      #89b4fa;
+@define-color lavender  #b4befe;
+@define-color sapphire  #74c7ec;
+@define-color sky       #89dceb;
+@define-color teal      #94e2d5;
+@define-color green     #a6e3a1;
+@define-color yellow    #f9e2af;
+@define-color peach     #fab387;
+@define-color maroon    #eba0ac;
+@define-color red       #f38ba8;
+@define-color mauve     #cba6f7;
+@define-color pink      #f5c2e7;
+@define-color flamingo  #f2cdcd;
+@define-color rosewater #f5e0dc;
+
 #window {
  border-radius: 14px;
  font-family: JetBrainsMono Nerd Font;
- background-color: #181825dd;
+ background-color: @base;
+ border: 2px solid @surface1;
 }
 
 #input {
  padding: 4px;
  border-radius: 14px 14px 0 0;
  font-size: 16px;
- background-color: #181825dd;
- border: none;
- color: #181825dd;
+ background-color: @mantle;
+ color: @text;
+  border: 2px solid @surface1;
+  border-bottom: none;
 }
 
 #input:focus {
@@ -19,7 +53,8 @@
 
 #scroll {
  border-radius: 14px;
- background-color: #181825dd;
+ background-color: @bg;
+ color: @text;
  margin: 0 12px 12px;
 }
 
@@ -29,15 +64,18 @@
 }
 
 #entry {
+ border-radius: 8px;
+ margin: 4px 0;
  padding: 8px;
+ border: none;
  transition-duration: 200ms;
 }
 
 #entry:selected {
- border-radius: 8px;
- background-color: #181825dd;
+ background-color: @surface1;
 }
 
 #entry image {
  margin-right: 8px;
 }
+

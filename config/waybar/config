@@ -15,6 +15,7 @@
   "custom/updates",
   "tray",
   "temperature",
+  "custom/nvidia",
   "load",
   "disk",
   "memory",
@@ -54,7 +55,7 @@
   "exec": "~/.local/bin/updates",
   "format": "󰏔 {} updates",
   "interval": 600,
-  "on-click": "plasma-discover --mode Update"
+  "on-click": "gnome-software --mode=updates"
  },
  "clock": {
   "tooltip-format": "<big>{:%Y %B}</big>\n\n<tt>{calendar}</tt>",
@@ -111,19 +112,19 @@
   "interval": 1,
   "format": "  {load1}%",
   "max-length": 10,
-  "on-click": "konsole -e btop"
+  "on-click": "flatpak run net.nokyan.Resources --open-tab-id cpu"
  },
  "disk": {
   "interval": 300,
   "format": "󰋊 {free}",
   "path": "/",
-  "on-click": "filelight"
+  "on-click": "baobab"
  },
  "memory": {
   "interval": 5,
   "format": "  {used:0.1f}G",
   "tooltip-format": "{used:0.1f}G/{total:0.1f}G ({percentage}% used)",
-  "on-click": "konsole -e btop"
+  "on-click": "flatpak run net.nokyan.Resources --open-tab-id memory"
  },
  "network": {
   "tooltip": false,
@@ -131,7 +132,7 @@
   "format-disconnected": "󰖪",
   "format-ethernet": "󰈀 Eth",
   "max-length": 25,
-  "on-click": "konsole -e nmtui"
+  "on-click": "ptyxis --new-window --execute nmtui"
  },
  "pulseaudio": {
   "format": "󰕾 {volume}%",
@@ -148,7 +149,12 @@
   "tooltip-format": "󰂯 {device_alias}",
   "tooltip-format-connected": "{device_enumerate}",
   "tooltip-format-enumerate-connected": "󰂯 {device_alias}",
-  "on-click": "blueman-manager"
+  "on-click": "flatpak run io.github.kaii_lb.Overskride"
+ },
+ "custom/nvidia": {
+  "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\)/ \\1°C/g'",
+  "format": "{} GPU",
+  "interval": 2
  },
  "custom/power": {
   "format": "󰤆",

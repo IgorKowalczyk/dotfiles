@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # Configuration
-DEFAULT_TEMP=6000  # Daytime temperature (K)
+DEFAULT_TEMP=6500  # Daytime temperature (K)
 NIGHT_TEMP=4500    # Nighttime temperature (K)
 SUNSET_TIME="20:00"  # Sunset time (hh:mm)
 SUNRISE_TIME="06:00" # Sunrise time (hh:mm)
@@ -71,6 +71,7 @@ calculate_temp() {
     fi
 }
 
+# Main loop
 while true; do
 
     pkill -9 -x hyprsunset

@@ -1,7 +1,7 @@
 #! /bin/sh
 
-#chosen=$(printf "  Power Off\n  Restart\n  Suspend\n  Hibernate\n  Log Out\n  Lock" | rofi -dmenu -i -theme-str '@import "power.rasi"')
-chosen=$(printf "  Power Off\n  Restart\n  Suspend\n  Log Out\n  Lock" | rofi -dmenu -i -theme-str '@import "power.rasi"')
+killall wofi
+chosen=$(printf "  Power Off\n  Restart\n  Suspend\n  Log Out\n  Lock" | wofi --dmenu --prompt "")
 
 case "$chosen" in
 	"  Lock") pidof hyprlock || hyprlock -q ;;

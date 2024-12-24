@@ -3,3 +3,4 @@ no_actions=true
 hide_scroll=false
 width=34%
 height=34%
+insensitive=true

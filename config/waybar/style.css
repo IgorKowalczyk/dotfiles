@@ -1,3 +1,4 @@
+/* Catppuccin Mocha */
 @define-color base   #1e1e2e;
 @define-color mantle #181825;
 @define-color crust  #11111b;
@@ -37,7 +38,6 @@
 }
 
 window#waybar {
- /* background-color: @crust; */
  background-color: transparent;
  color: @text;
 }
@@ -98,7 +98,6 @@ button {
 #disk,
 #temperature,
 #load,
-#backlight,
 #network,
 #bluetooth,
 #pulseaudio,
@@ -106,12 +105,9 @@ button {
 #custom-power,
 #custom-updates,
 #custom-media,
+#custom-nvidia,
 #tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#workspaces,
-#mpd {
+#workspaces {
  padding: 0 12px;
  background-color: @base;
  color: @crust;
@@ -122,10 +118,6 @@ button {
 #workspaces {
  padding: 0 5px;
  margin: 5px 2px;
-}
-
-label:focus {
- background-color: #000000;
 }
 
 #clock,
@@ -186,3 +178,8 @@ label:focus {
 #custom-power {
  color: @mauve;
 }
+
+#custom-nvidia {
+ color: @rosewater;
+}
+

@@ -12,12 +12,12 @@ case $1 in
 up)
 	# Set the volume on (if it was muted)
 	pamixer -u
-	pamixer -i 5
+	pamixer -i 4
 	send_notification "$1"
 	;;
 down)
 	pamixer -u
-	pamixer -d 5
+	pamixer -d 4
 	send_notification "$1"
 	;;
 mute)

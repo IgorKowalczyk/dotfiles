@@ -1,0 +1,30 @@
+// documentation: https://zed.dev/docs/configuring-zed
+{
+ "outline_panel": {
+  "dock": "right"
+ },
+ "base_keymap": "VSCode",
+ "toolbar": {
+  "enabled": true,
+  "position": "top"
+ },
+ "file_icons": true,
+ "git_status": true,
+ "telemetry": {
+  "diagnostics": false,
+  "metrics": false
+ },
+ "git": {
+  "git_gutter": "tracked_files",
+  "inline_blame": {
+   "enabled": true
+  }
+ },
+ "ui_font_size": 16,
+ "buffer_font_size": 16,
+ "theme": {
+  "mode": "system",
+  "light": "One Light",
+  "dark": "Catppuccin Mocha"
+ }
+}
