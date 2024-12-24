@@ -16,7 +16,7 @@
    ~/.oh-my-zsh/custom/plugins/zsh-autocomplete: "oh-my-zsh/custom/plugins/zsh-autocomplete"
    ~/.gitignore: "git/gitignore"
    ~/.gitconfig: "git/gitconfig"
-   ~/.gitconfig.local: "git/gitconfig.local"
+   # ~/.gitconfig.local: "git/gitconfig.local"
    ~/.config/astro: "config/astro"
    ~/.config/btop: "config/btop"
    ~/.config/cava: "config/cava"

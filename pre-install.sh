@@ -13,8 +13,7 @@ sudo dnf install -y gh zsh gcc g++ git curl hyprland hyprshot hyprsunset wofi wa
 if [ -f "$HOME/.gitconfig" ]; then
   if [ ! -f "$HOME/.gitconfig.local" ]; then
     echo "${BLUE}Copying .gitconfig to gitconfig.local${RESET}"
-    mkdir -p "$HOME/dotfiles/git"
-    if cp "$HOME/.gitconfig" "$HOME/dotfiles/git/gitconfig.local"; then
+    if cp "$HOME/.gitconfig" "$HOME/.gitconfig.local"; then
       rm "$HOME/.gitconfig"
     else
       echo "${RED}Failed to copy .gitconfig to gitconfig.local${RESET}"
@@ -30,8 +29,7 @@ fi
 if [ -f "$HOME/.zshrc" ]; then
   if [ ! -f "$HOME/.zshrc.local" ]; then
     echo "${BLUE}Copying .zshrc to zshrc.local${RESET}"
-    mkdir -p "$HOME/dotfiles/zsh"
-    if cp "$HOME/.zshrc" "$HOME/dotfiles/zsh/zshrc.local"; then
+    if cp "$HOME/.zshrc" "$HOME/.zshrc.local"; then
       rm "$HOME/.zshrc"
     else
       echo "${RED}Failed to copy .zshrc to zshrc.local${RESET}"
