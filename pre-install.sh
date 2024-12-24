@@ -92,6 +92,6 @@ for file in scripts/*; do
   fi
 done
 
-echo "${BLUE}Enabling hyprpm${RESET}"
-hyprpm update
+# echo "${BLUE}Enabling hyprpm${RESET}"
+# hyprpm update
 

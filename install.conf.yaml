@@ -23,6 +23,7 @@
    ~/.config/dolphin: "config/dolphin"
    ~/.config/dunst: "config/dunst"
    ~/.config/fastfetch: "config/fastfetch"
+   ~/.config/gh: "config/gh"
    ~/.config/hypr: "config/hypr"
    ~/.config/Kvantum: "config/Kvantum"
    ~/.config/turborepo: "config/turborepo"
