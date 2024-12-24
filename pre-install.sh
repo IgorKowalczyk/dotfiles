@@ -8,7 +8,7 @@ RESET=$(printf '\033[0m')
 echo "${BLUE}Installing required packages for Fedora${RESET}"
 sudo dnf copr enable solopasha/hyprland -y
 sudo dnf install 'dnf-command(config-manager)' -y
-sudo dnf install -y gh zsh gcc g++ git curl hyprland hyprshot hyprsunset wofi waybar cava dunst fastfetch kvantum-qt5 pamixer btop swappy cliphist pavucontrol blueman nm-applet ptyxis wl-paste
+sudo dnf install -y gh zsh gcc g++ git curl hyprland hyprshot hyprsunset wofi waybar cava dunst fastfetch kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste
 
 if [ -f "$HOME/.gitconfig" ]; then
   if [ ! -f "$HOME/.gitconfig.local" ]; then
@@ -92,4 +92,12 @@ done
 
 # echo "${BLUE}Enabling hyprpm${RESET}"
 # hyprpm update
+
+echo "${BLUE}Installing Discord${RESET}"
+flatpak install flathub com.discordapp.Discord -y --or-update
+
+echo "${BLUE}Installing overskride${RESET}"
+curl -L https://github.com/kaii-lb/overskride/releases/download/v0.6.1/overskride.flatpak -o "$HOME/Downloads/overskride.flatpak"
+sudo flatpak install "$HOME/Downloads/overskride.flatpak" -y --or-update
+rm "$HOME/Downloads/overskride.flatpak"
 
