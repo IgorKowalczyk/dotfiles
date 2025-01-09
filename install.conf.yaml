@@ -12,8 +12,10 @@
    - [git submodule update --init --recursive, Installing submodules]
 
 - link:
-   ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions: "oh-my-zsh/custom/plugins/zsh-autosuggestions"
-   ~/.oh-my-zsh/custom/plugins/zsh-autocomplete: "oh-my-zsh/custom/plugins/zsh-autocomplete"
+   ~/.oh-my-zsh/custom/plugins:
+    glob: true
+    path: "zsh/plugins/*"
+    relink: true
    ~/.gitignore: "git/gitignore"
    ~/.gitconfig: "git/gitconfig"
    ~/.config/astro: "config/astro"

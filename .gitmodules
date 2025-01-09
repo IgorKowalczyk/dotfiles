@@ -1,12 +1,12 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-#	ignore = dirty
+	ignore = dirty
 [submodule "zsh/plugins/zsh-autosuggestions"]
 	path = zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-#	ignore = dirty
+ignore = dirty
 [submodule "zsh/plugins/zsh-autocomplete"]
 	path = zsh/plugins/zsh-autocomplete
 	url = https://github.com/marlonrichert/zsh-autocomplete
-	# ignore = dirty
+ ignore = dirty
