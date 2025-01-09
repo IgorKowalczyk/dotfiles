@@ -66,13 +66,9 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Configure atuin
-eval "$(atuin init zsh)"
 . "$HOME/.atuin/bin/env"
 
-
-# Add console-ninja to path [Visual Studio Code Extension]
-PATH=~/.console-ninja/.bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
+eval "$(atuin init zsh)"
 
 # Add flatpak to path (Fixes flatpak throwing errors while updating)
 export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:$XDG_DATA_DIRS
