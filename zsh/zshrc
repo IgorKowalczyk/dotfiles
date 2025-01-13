@@ -49,7 +49,6 @@ export GPG_TTY=$(tty)
 # corepack
 export COREPACK_ENABLE_STRICT=0
 
-
 # Add local bin to path
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
