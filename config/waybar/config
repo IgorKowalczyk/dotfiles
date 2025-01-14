@@ -21,6 +21,7 @@
   "memory",
   "pulseaudio",
   "bluetooth",
+  "custom/gsconnect",
   "battery",
   "custom/power"
  ],
@@ -150,6 +151,15 @@
   "tooltip-format-connected": "{device_enumerate}",
   "tooltip-format-enumerate-connected": "󰂯 {device_alias}",
   "on-click": "flatpak run io.github.kaii_lb.Overskride"
+ },
+ "custom/gsconnect" : {
+  "format": "{}",
+  "escape": true,
+  "exec": "python3 $HOME/.local/bin/gsconnect-status.py",
+  "return-type": "json",
+  "tooltip": "{tooltip}",
+  "interval": 30,
+  "on-click": "/usr/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/gsconnect-preferences"
  },
  "custom/nvidia": {
   "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\)/ \\1°C/g'",

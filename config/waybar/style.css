@@ -106,6 +106,7 @@ button {
 #custom-updates,
 #custom-media,
 #custom-nvidia,
+#custom-gsconnect,
 #tray,
 #workspaces {
  padding: 0 12px;
@@ -181,5 +182,9 @@ button {
 
 #custom-nvidia {
  color: @rosewater;
+}
+
+#custom-gsconnect {
+ color: @flamingo;
 }
 

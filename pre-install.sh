@@ -9,7 +9,7 @@ TAG=$(printf '\033[0;34m[Pre-Install]\033[0m')
 echo "${TAG} ${BLUE}Installing required packages for Fedora${RESET}"
 sudo dnf copr enable solopasha/hyprland -y
 sudo dnf install 'dnf-command(config-manager)' -y
-sudo dnf install -y gh zsh gcc g++ git curl hyprland hyprshot hyprsunset wofi waybar cava dunst fastfetch kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste
+sudo dnf install -y gh zsh gcc g++ git curl hyprland hyprshot hyprsunset wofi waybar cava dunst fastfetch kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste gnome-shell-extension-gsconnect
 
 if [ -f "$HOME/.gitconfig" ]; then
   if [ ! -f "$HOME/.gitconfig.local" ]; then
