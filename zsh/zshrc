@@ -71,3 +71,4 @@ eval "$(atuin init zsh)"
 
 # Add flatpak to path (Fixes flatpak throwing errors while updating)
 export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:$XDG_DATA_DIRS
+
