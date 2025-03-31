@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Increment, decrement, or mute the volume and send a notification
-# of the current volume level.
-
 send_notification() {
 	volume=$(pamixer --get-volume)
 	dunstify -a "changevolume" -u low -r 9993 -h int:value:"$volume" -i "volume" "Volume" "Currently at ${volume}%" -t 2000
@@ -10,7 +7,6 @@ send_notification() {
 
 case $1 in
 up)
-	# Set the volume on (if it was muted)
 	pamixer -u
 	pamixer -i 4
 	send_notification "$1"

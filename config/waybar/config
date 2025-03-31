@@ -20,9 +20,8 @@
   "disk",
   "memory",
   "pulseaudio",
-  "bluetooth",
-  "custom/gsconnect",
   "battery",
+  "custom/gamma",
   "custom/power"
  ],
  "hyprland/workspaces": {
@@ -30,11 +29,7 @@
   "all-outputs": false,
   "on-click": "",
   "persistent-workspaces": {
-   "1": [],
-   "2": [],
-   "3": [],
-   "4": [],
-   "5": []
+   "*": 5
   }
  },
  "hyprland/window": {
@@ -139,8 +134,8 @@
   "format": "󰕾 {volume}%",
   "format-muted": "󰖁 {volume}%",
   "on-click": "pavucontrol -t 3",
-  "on-scroll-up": "~/.local/bin/changevolume up",
-  "on-scroll-down": "~/.local/bin/changevolume down",
+  "on-scroll-up": "~/.local/bin/change-volume up",
+  "on-scroll-down": "~/.local/bin/change-volume down",
   "scroll-step": 1
  },
  "bluetooth": {
@@ -152,14 +147,17 @@
   "tooltip-format-enumerate-connected": "󰂯 {device_alias}",
   "on-click": "blueman-manager"
  },
- "custom/gsconnect" : {
-  "format": "{}",
-  "escape": true,
-  "exec": "python3 $HOME/.local/bin/gsconnect-status.py",
-  "return-type": "json",
-  "tooltip": "{tooltip}",
-  "interval": 30,
-  "on-click": "/usr/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/gsconnect-preferences"
+ "custom/gamma": {
+  "format": "󰖨 {}%",
+  "on-click-right": "~/.local/bin/change-gamma reset",
+  "on-scroll-up": "~/.local/bin/change-gamma up",
+  "on-scroll-down": "~/.local/bin/change-gamma down",
+  "exec": "~/.local/bin/change-gamma get",
+  "exec-on-event": true,
+  "exec-if": "pidof hyprsunset",
+  "interval": "once",
+  "tooltip": true,
+  "tooltip-format": "{}% brightness"
  },
  "custom/nvidia": {
   "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\)/ \\1°C/g'",
@@ -169,12 +167,5 @@
  "custom/power": {
   "format": "󰤆",
   "on-click": "~/.local/bin/powermenu"
- },
- "custom/media": {
-  "format": "{icon} {}",
-  "return-type": "json",
-  "max-length": 15,
-  "escape": true,
-  "exec": "~/.local/bin/waybar-media.py 2> /dev/null"
  }
 }

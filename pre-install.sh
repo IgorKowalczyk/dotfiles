@@ -9,7 +9,7 @@ TAG=$(printf '\033[0;34m[Pre-Install]\033[0m')
 echo "${TAG} ${BLUE}Installing required packages for Fedora${RESET}"
 sudo dnf copr enable solopasha/hyprland -y
 sudo dnf install 'dnf-command(config-manager)' -y
-sudo dnf install -y gh zsh gcc g++ git curl hyprland hyprshot hyprsunset wofi waybar cava dunst fastfetch kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste gnome-shell-extension-gsconnect
+sudo dnf install -y gh zsh gcc g++ git curl hyprland hyprshot hyprsunset wofi waybar cava dunst fastfetch kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste
 
 if [ -f "$HOME/.gitconfig" ]; then
   if [ ! -f "$HOME/.gitconfig.local" ]; then
@@ -78,7 +78,7 @@ else
   echo "${TAG} ${GREEN}Atuin is already installed${RESET}"
 fi
 
-# Check if starship is installed
+# Install scripts to $HOME/.local/bin
 for file in scripts/*; do
   if [ -f "$file" ]; then
     if [ ! -f "$HOME/.local/bin/$(basename $file)" ]; then

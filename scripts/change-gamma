@@ -1,0 +1,28 @@
+#!/bin/sh
+
+send_gamma_notification() {
+	gamma_value=$(hyprctl hyprsunset gamma)
+	dunstify -a "changegamma" -u low -r 9994 -h int:value:"$gamma_value" -i "display-brightness" "Gamma" "Currently at ${gamma_value}%" -t 2000
+}
+
+change_gamma() {
+	case $1 in
+		"reset")
+			hyprctl hyprsunset gamma 100
+			send_gamma_notification
+			;;
+		"up")
+			hyprctl hyprsunset gamma +5
+			send_gamma_notification
+			;;
+		"down")
+			hyprctl hyprsunset gamma -5
+			send_gamma_notification
+			;;
+		"get")
+			hyprctl hyprsunset gamma
+			;;
+	esac
+}
+
+change_gamma $1
