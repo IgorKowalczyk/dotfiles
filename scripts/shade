@@ -27,39 +27,45 @@ calculate_temp() {
 
     # Normalize times for easier comparison
     if ((sunrise_minutes < sunset_minutes)); then
-        if ((current_minutes < sunrise_minutes)); then
-            current_minutes=$((current_minutes + total_day_minutes))
+        # Daytime spans from sunrise to sunset
+        if ((current_minutes >= sunrise_minutes && current_minutes < sunset_minutes)); then
+            echo "identity"
+            return
         fi
-        sunset_minutes=$((sunset_minutes + total_day_minutes))
-    fi
-
-    if ((current_minutes >= sunrise_minutes && current_minutes < sunset_minutes)); then
-        echo "identity"
     else
-        local night_start_minutes=$sunset_minutes
-        local night_end_minutes=$((sunrise_minutes + total_day_minutes))
-
-        local transition_time=$((night_end_minutes - night_start_minutes))
-        if ((transition_time > max_transition_time)); then
-            transition_time=$max_transition_time
+        # Nighttime spans across midnight
+        if ((current_minutes >= sunset_minutes || current_minutes < sunrise_minutes)); then
+            # It's nighttime
+            :
+        else
+            echo "identity"
+            return
         fi
-
-        local elapsed_minutes=$((current_minutes - night_start_minutes))
-        if ((elapsed_minutes < 0)); then
-            elapsed_minutes=$((elapsed_minutes + total_day_minutes))
-        fi
-
-        local temp_diff=$((6500 - night_temp))
-        local temp_step=$((temp_diff / (transition_time / gradual_interval)))
-        local temp_change=$(( (elapsed_minutes / gradual_interval) * temp_step ))
-
-        local current_temp=$((6500 - temp_change))
-        if ((current_temp < night_temp)); then current_temp=$night_temp; fi
-
-        echo $current_temp
     fi
-}
 
+    # Calculate temperature for nighttime
+    local night_start_minutes=$sunset_minutes
+    local night_end_minutes=$((sunrise_minutes + total_day_minutes))
+
+    local transition_time=$((night_end_minutes - night_start_minutes))
+    if ((transition_time > max_transition_time)); then
+        transition_time=$max_transition_time
+    fi
+
+    local elapsed_minutes=$((current_minutes - night_start_minutes))
+    if ((elapsed_minutes < 0)); then
+        elapsed_minutes=$((elapsed_minutes + total_day_minutes))
+    fi
+
+    local temp_diff=$((6500 - night_temp))
+    local temp_step=$((temp_diff / (transition_time / gradual_interval)))
+    local temp_change=$(( (elapsed_minutes / gradual_interval) * temp_step ))
+
+    local current_temp=$((6500 - temp_change))
+    if ((current_temp < night_temp)); then current_temp=$night_temp; fi
+
+    echo $current_temp
+}
 while true; do
     current_time=$(date +"%H:%M")
     temperature=$(calculate_temp "$current_time")
