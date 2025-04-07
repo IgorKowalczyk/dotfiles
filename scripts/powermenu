@@ -1,14 +1,14 @@
 #! /bin/sh
 
 killall wofi
-chosen=$(printf "  Power Off\n  Restart\n  Suspend\n  Log Out\n  Lock" | wofi --dmenu --prompt "")
+chosen=$(printf "  Power Off\n  Restart\n  Suspend\n  Log Out\n  Lock" | wofi --dmenu --prompt "")
 
 case "$chosen" in
 	"  Lock") pidof hyprlock || hyprlock -q ;;
-	"  Suspend") pidof hyprlock || hyprlock -q & systemctl suspend ;;
+	"  Suspend") pidof hyprlock || hyprlock -q & systemctl suspend ;;
 	"  Power Off") systemctl poweroff ;;
-	"  Restart") systemctl reboot ;;
+	"  Restart") systemctl reboot ;;
 # 	"  Hibernate") systemctl hibernate ;;
-	"  Log Out") hyprctl dispatch exit 0 ;;
+	"  Log Out") hyprctl dispatch exit 0 ;;
 	*) exit 1 ;;
 esac
