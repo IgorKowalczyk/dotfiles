@@ -75,6 +75,8 @@ eval "$(atuin init zsh)"
 export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:$XDG_DATA_DIRS
 
 . "/home/igor/.deno/env"
-# Initialize zsh completions (added by deno install script)
+
+# PHP
 autoload -Uz compinit
-compinit
+export PATH="/home/igor/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/home/igor/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
