@@ -56,6 +56,7 @@
  "clock": {
   "tooltip-format": "<big>{:%Y %B}</big>\n\n<tt>{calendar}</tt>",
   "format": "  {:%H:%M |   %a, %b %d}",
+  "locale": "en_GB",
   "calendar": {
    "mode": "year",
    "mode-mon-col": 3,
@@ -68,6 +69,13 @@
     "weekdays": "<span color='#b4befe'><b>{}</b></span>",
     "today": "<span color='#f38ba8'><b><u>{}</u></b></span>"
    }
+  },
+  "actions": {
+   "on-click-right": "mode",
+   "on-scroll-up": "tz_up",
+   "on-scroll-down": "tz_down",
+   "on-scroll-up": "shift_up",
+   "on-scroll-down": "shift_down"
   }
  },
  "battery": {
