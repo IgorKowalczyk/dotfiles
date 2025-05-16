@@ -9,7 +9,9 @@
   </a>
 </div>
 
----
+## 📸 Preview
+![image](https://github.com/user-attachments/assets/603a55f0-1e26-4387-90e7-d117b562321c)
+
 
 ## 🛠️ Installation
 
