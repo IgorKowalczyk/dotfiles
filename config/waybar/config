@@ -120,7 +120,7 @@
  },
  "disk": {
   "interval": 300,
-  "format": "󰋊 {free}",
+  "format": "󰋊 {used}",
   "path": "/",
   "on-click": "baobab"
  },
@@ -163,7 +163,7 @@
   "exec": "~/.local/bin/change-gamma get",
   "exec-on-event": true,
   "exec-if": "pidof hyprsunset",
-  "interval": "once",
+  "interval": 2,
   "tooltip": true,
   "tooltip-format": "{}% brightness"
  },

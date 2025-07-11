@@ -1,7 +1,7 @@
 #! /bin/sh
 
 night_temp=4500        # Screen temperature during the night (in K)
-sunset_time="20:00"    # Time of sunset (hh:mm)
+sunset_time="22:00"    # Time of sunset (hh:mm)
 sunrise_time="06:00"   # Time of sunrise (hh:mm)
 gradual_interval=1     # Interval of temperature change (in minutes)
 max_transition_time=30 # Maximum transition time (in minutes)
