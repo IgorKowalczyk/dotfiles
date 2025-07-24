@@ -21,7 +21,6 @@
   "memory",
   "pulseaudio",
   "battery",
-  "custom/gamma",
   "custom/power"
  ],
  "hyprland/workspaces": {
