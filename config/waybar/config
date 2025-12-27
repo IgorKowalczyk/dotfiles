@@ -20,6 +20,7 @@
   "disk",
   "memory",
   "pulseaudio",
+  "custom/gamma",
   "battery",
   "custom/power"
  ],
@@ -159,7 +160,6 @@
   "on-scroll-down": "~/.local/bin/change-gamma down",
   "exec": "~/.local/bin/change-gamma get",
   "exec-on-event": true,
-  "exec-if": "pidof hyprsunset",
   "interval": 2,
   "tooltip": true,
   "tooltip-format": "{}% brightness"
