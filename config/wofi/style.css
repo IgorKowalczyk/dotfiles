@@ -31,10 +31,10 @@
 @define-color rosewater #f5e0dc;
 
 #window {
- border-radius: 14px;
  font-family: JetBrainsMono Nerd Font;
  background-color: @base;
  border: 2px solid @surface1;
+ border-radius: 14px;
 }
 
 #input {

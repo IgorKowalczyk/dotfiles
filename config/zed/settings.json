@@ -5,11 +5,10 @@
   },
   "show_edit_predictions": true,
   "edit_predictions": {
+    "disabled_globs": [],
+    "provider": "copilot",
     "mode": "eager",
     "enabled_in_text_threads": false,
-  },
-  "features": {
-    "edit_prediction_provider": "copilot",
   },
   "agent": {
     "enable_feedback": false,

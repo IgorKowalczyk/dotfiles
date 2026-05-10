@@ -7,9 +7,9 @@ TAG=$(printf '\033[0;34m[Pre-Install]\033[0m')
 
 # Install required packages for Fedora
 echo "${TAG} ${BLUE}Installing required packages for Fedora${RESET}"
-sudo dnf copr enable solopasha/hyprland -y
+sudo dnf copr enable lionheartp/Hyprland -y
 sudo dnf install 'dnf-command(config-manager)' -y
-sudo dnf install -y gh zsh gcc g++ git curl hyprland hyprshot hyprsunset wofi waybar dunst fastfetch kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste
+sudo dnf install -y gh zsh gcc g++ git curl hyprland hyprshot hyprsunset wofi waybar dunst fastfetch kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste dunstify gamemode hyprland-qtutils hyprland-qt-support hyprland-guiutils hyprpolkitagent restic gtk-murrine-engine
 
 if [ -f "$HOME/.gitconfig" ]; then
   if [ ! -f "$HOME/.gitconfig.local" ]; then
@@ -91,8 +91,20 @@ for file in scripts/*; do
   fi
 done
 
-# echo "${TAG} ${BLUE}Enabling hyprpm${RESET}"
-# hyprpm update
+echo "${TAG} ${BLUE}Enabling hyprpm${RESET}"
+hyprpm update
+
+echo "${TAG} ${BLUE}Installing hyprland plugins${RESET}"
+hyprpm add https://github.com/hyprwm/hyprland-plugins
+hyprpm enable hyprexpo
+
+hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
+hyprpm enable dynamic-cursors
+
+hyprpm add https://github.com/zjeffer/split-monitor-workspaces
+hyprpm enable split-monitor-workspaces
+
+hyprpm reload
 
 # echo "${TAG} ${BLUE}Installing Discord${RESET}"
 # flatpak install flathub com.discordapp.Discord -y --or-update
@@ -102,3 +114,10 @@ done
 # sudo flatpak install "$HOME/Downloads/overskride.flatpak" -y --or-update
 # rm "$HOME/Downloads/overskride.flatpak"
 
+# Download Fausto-Korpsvart/Catppuccin-GTK-Theme
+echo "${TAG} ${BLUE}Installing Catppuccin-GTK-Theme${RESET}"
+git clone Fausto-Korpsvart/Catppuccin-GTK-Theme --depth 1 "$HOME/Downloads/Catppuccin-gtk"
+
+echo "${TAG} ${BLUE}Installing Catppuccin-GTK-Theme${RESET}"
+cd "$HOME/Downloads/Catppuccin-gtk" 
+sudo ./install.sh -l -t lavender -c dark -s standard --tweaks macos black macchiato

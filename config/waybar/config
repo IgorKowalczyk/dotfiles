@@ -9,28 +9,28 @@
   "hyprland/window"
  ],
  "modules-center": [
-  "clock"
+  "clock",
+  "privacy",
+  "gamemode"
  ],
  "modules-right": [
   "custom/updates",
   "tray",
   "temperature",
   "custom/nvidia",
-  "load",
-  "disk",
+  "cpu",
   "memory",
+//  "disk",
   "pulseaudio",
   "custom/gamma",
   "battery",
   "custom/power"
  ],
  "hyprland/workspaces": {
-  "disable-scroll": false,
-  "all-outputs": false,
-  "on-click": "",
-  "persistent-workspaces": {
-   "*": 5
-  }
+    "on-scroll-up": "hyprctl dispatch split-cycleworkspaces -1",
+    "on-scroll-down": "hyprctl dispatch split-cycleworkspaces +1",
+    "all-outputs": false,
+    "separate-outputs": true
  },
  "hyprland/window": {
   "separate-outputs": true,
@@ -43,13 +43,13 @@
   }
  },
  "tray": {
-  "icon-size": 21,
-  "show-passive-items": true,
-  "spacing": 10
+  "icon-size": 18,
+  "show-passive-items": false,
+  "spacing": 6
  },
  "custom/updates": {
   "exec": "~/.local/bin/updates",
-  "format": "󰏔 {} updates",
+  "format": "󰏔 {}",
   "interval": 600,
   "on-click": "gnome-software --mode=updates"
  },
@@ -61,7 +61,7 @@
    "mode": "year",
    "mode-mon-col": 3,
    "weeks-pos": "right",
-   "on-scroll": 1,
+   "on-scroll": "mode",
    "format": {
     "months": "<span color='#89b4fa'><b>{}</b></span>",
     "days": "<span color='#cdd6f4'>{}</span>",
@@ -101,20 +101,61 @@
   "tooltip-format": "{timeTo} | {health}% health"
  },
  "temperature": {
-  "critical-threshold": 50,
+  "critical-threshold": 90,
   "format": "{icon} {temperatureC}°C CPU",
   "format-icons": [
    "",
    "",
    ""
   ],
-  "tooltip": true
- },
- "load": {
-  "interval": 1,
-  "format": "  {load1}%",
-  "max-length": 10,
+  "interval": 20,
+  "tooltip": true,
   "on-click": "flatpak run net.nokyan.Resources --open-tab-id cpu"
+ },
+ "privacy": {
+	"icon-spacing": 4,
+	"icon-size": 14,
+	"transition-duration": 250,
+	"modules": [
+		{
+			"type": "screenshare",
+			"tooltip": true,
+			"tooltip-icon-size": 14
+		},
+		{
+			"type": "audio-in",
+			"tooltip": true,
+			"tooltip-icon-size": 14
+		}
+	],
+	"ignore-monitor": true,
+	"ignore": [
+		{
+			"type": "audio-out"
+		}
+	]
+},
+"gamemode": {
+    "format": "{glyph} {count}",
+    "glyph": "",
+    "hide-not-running": true,
+    "use-icon": true,
+    "icon-name": "input-gaming-symbolic",
+    "icon-spacing": 4,
+    "icon-size": 20,
+    "tooltip": true,
+    "tooltip-format": "Games running: {count}"
+},
+ "custom/nvidia": {
+  "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\)/ \\1°C/g'",
+  "format": "{} GPU",
+  "on-click": "flatpak run net.nokyan.Resources --open-tab-id gpu-0000:01:00.0",
+  "interval": 20
+ },
+ "cpu": {
+  "interval": 5,
+  "format": "  {usage}%",
+  "on-click": "flatpak run net.nokyan.Resources --open-tab-id applications"
  },
  "disk": {
   "interval": 300,
@@ -155,7 +196,7 @@
  },
  "custom/gamma": {
   "format": "󰖨 {}%",
-  "on-click-right": "~/.local/bin/change-gamma reset",
+  "on-click": "~/.local/bin/change-gamma reset",
   "on-scroll-up": "~/.local/bin/change-gamma up",
   "on-scroll-down": "~/.local/bin/change-gamma down",
   "exec": "~/.local/bin/change-gamma get",
@@ -163,11 +204,6 @@
   "interval": 2,
   "tooltip": true,
   "tooltip-format": "{}% brightness"
- },
- "custom/nvidia": {
-  "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\)/ \\1°C/g'",
-  "format": "{} GPU",
-  "interval": 2
  },
  "custom/power": {
   "format": "󰤆",
