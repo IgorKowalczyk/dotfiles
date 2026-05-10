@@ -10,7 +10,8 @@
 </div>
 
 ## 📸 Preview
-![image](https://github.com/user-attachments/assets/603a55f0-1e26-4387-90e7-d117b562321c)
+![Preview](https://github.com/user-attachments/assets/a85294fb-8db7-4aa4-82e4-092a3ee4dc27)
+
 
 
 ## 🛠️ Installation
