@@ -10,7 +10,8 @@ echo "${TAG} ${BLUE}Installing required packages for Fedora${RESET}"
 sudo dnf copr enable lionheartp/Hyprland -y
 sudo dnf install 'dnf-command(config-manager)' -y
 sudo dnf install -y gh zsh gcc g++ git curl hyprland hyprshot hyprsunset wofi waybar dunst fastfetch kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste dunstify gamemode hyprland-qtutils hyprland-qt-support hyprland-guiutils hyprpolkitagent restic gtk-murrine-engine
-
+sudo dnf install -y hyprutils-devel hyprcursor-devel hyprlang-devel aquamarine-devel hyprgraphics-devel hyprwayland-scanner-devel hyprwire-devel hyprland-protocols-devel
+sudo dnf install -y tomlplusplus-devel xcb-util-wm-devel xcb-util-errors-devel lua-devel libxkbcommon-devel libuuid-devel wayland-devel wayland-protocols-devel cairo-devel pango-devel pixman-devel libXcursor-devel libinput-devel mesa-libgbm-devel glib2-devel re2-devel muParser-devel lcms2-devel muParser-devel
 if [ -f "$HOME/.gitconfig" ]; then
   if [ ! -f "$HOME/.gitconfig.local" ]; then
     echo "${TAG} ${BLUE}Copying .gitconfig to gitconfig.local${RESET}"
