@@ -9,8 +9,8 @@ TAG=$(printf '\033[0;34m[Pre-Install]\033[0m')
 echo "${TAG} ${BLUE}Installing required packages for Fedora${RESET}"
 sudo dnf copr enable lionheartp/Hyprland -y
 sudo dnf install 'dnf-command(config-manager)' -y
-sudo dnf install -y gh zsh gcc g++ git curl wofi waybar dunst fastfetch kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste dunstify gamemode restic gtk-murrine-engine
-sudo dnf install -y hyprland hyprshot hyprsunset hyprland-qt-support hyprland-guiutils hyprpolkitagent
+sudo dnf install -y gh zsh gcc g++ git curl wofi waybar dunst fastfetch nmtui kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste dunstify gamemode restic gtk-murrine-engine sassc
+sudo dnf install -y hyprland hyprshot hyprpaper hyprlock hyprsunset hyprland-qt-support hyprland-guiutils hyprpolkitagent
 sudo dnf install -y hyprutils-devel hyprcursor-devel hyprlang-devel aquamarine-devel hyprgraphics-devel hyprwayland-scanner-devel hyprwire-devel hyprland-protocols-devel
 sudo dnf install -y tomlplusplus-devel xcb-util-wm-devel xcb-util-errors-devel lua-devel libxkbcommon-devel libuuid-devel wayland-devel wayland-protocols-devel cairo-devel pango-devel pixman-devel libXcursor-devel libinput-devel mesa-libgbm-devel glib2-devel re2-devel muParser-devel lcms2-devel muParser-devel
 if [ -f "$HOME/.gitconfig" ]; then
@@ -61,16 +61,20 @@ else
   echo "${TAG} ${GREEN}oh-my-zsh is already installed${RESET}"
 fi
 
-# Check if NerdFonts are installed - install if not
 if [ ! -d "$HOME/.local/share/fonts/NerdFonts" ]; then
   echo "${TAG} ${BLUE}Installing NerdFonts${RESET}"
-  mkdir -p "$HOME/.local/share/fonts/NerdFonts"
-  curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/3270.zip -o "$HOME/.local/share/fonts/NerdFonts/3270.zip"
-  unzip "$HOME/.local/share/fonts/NerdFonts/3270.zip" -d "$HOME/.local/share/fonts/NerdFonts"
-  rm "$HOME/.local/share/fonts/NerdFonts/3270.zip"
+  git clone https://github.com/ryanoasis/nerd-fonts --depth 1 "$HOME/Downloads/nerd-fonts"
+  
+  sh $HOME/Downloads/nerd-fonts/install.sh
+  
+  echo "${TAG} ${BLUE}Cleaning NerdFonts${RESET}"
+  rm "$HOME/Downloads/nerd-fonts" -fr
 else
   echo "${TAG} ${GREEN}NerdFonts is already installed${RESET}"
 fi
+
+echo "${TAG} ${BLUE}Installing nvm${RESET}"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 
 # Check if atuin is installed - install if not
 if [ ! -d "$HOME/.config/atuin" ]; then
@@ -89,9 +93,10 @@ for file in scripts/*; do
       chmod +x "$HOME/.local/bin/$(basename $file)"
     else
       echo "${TAG} ${GREEN}$(basename $file) is already linked${RESET}"
-  fi
+    fi
   fi
 done
+
 
 echo "${TAG} ${BLUE}Enabling hyprpm${RESET}"
 hyprpm update
@@ -103,23 +108,28 @@ hyprpm enable hyprexpo
 hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
 hyprpm enable dynamic-cursors
 
-hyprpm add https://github.com/zjeffer/split-monitor-workspaces
-hyprpm enable split-monitor-workspaces
+if [ ! -d "$HOME/.config/hypr/plugins/split-monitor-workspaces" ]; then
+  echo "${TAG} ${BLUE}Clonning split-monitor-workspaces${RESET}"
+  git clone https://github.com/zjeffer/split-monitor-workspaces.git --depth 1 "$HOME/.config/hypr/plugins/split-monitor-workspaces"
+else
+  echo "${TAG} ${GREEN}Hyprland plugin split-monitor-workspaces is already installed${RESET}"
+fi
 
 hyprpm reload
 
-# echo "${TAG} ${BLUE}Installing Discord${RESET}"
-# flatpak install flathub com.discordapp.Discord -y --or-update
-
-# echo "${TAG} ${BLUE}Installing overskride${RESET}"
-# curl -L https://github.com/kaii-lb/overskride/releases/download/v0.6.1/overskride.flatpak -o "$HOME/Downloads/overskride.flatpak"
-# sudo flatpak install "$HOME/Downloads/overskride.flatpak" -y --or-update
-# rm "$HOME/Downloads/overskride.flatpak"
-
-# Download Fausto-Korpsvart/Catppuccin-GTK-Theme
-echo "${TAG} ${BLUE}Installing Catppuccin-GTK-Theme${RESET}"
-git clone Fausto-Korpsvart/Catppuccin-GTK-Theme --depth 1 "$HOME/Downloads/Catppuccin-gtk"
+echo "${TAG} ${BLUE}Clonning Catppuccin-GTK-Theme${RESET}"
+git clone https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme.git --depth 1 "$HOME/Downloads/Catppuccin-gtk"
 
 echo "${TAG} ${BLUE}Installing Catppuccin-GTK-Theme${RESET}"
-cd "$HOME/Downloads/Catppuccin-gtk" 
-sudo ./install.sh -l -t lavender -c dark -s standard --tweaks macos black macchiato
+sudo sh $HOME/Downloads/Catppuccin-gtk/themes/install.sh -l -t lavender -c dark -s standard --tweaks macos black macchiato
+
+sudo flatpak override --env=GTK_THEME=Catppuccin-Lavender-Dark-Macchiato
+
+echo "${TAG} ${BLUE}Cleaning Catppuccin-GTK-Theme${RESET}"
+rm "$HOME/Downloads/Catppuccin-gtk" -fr
+
+echo "${TAG} ${BLUE}Installing bottles${RESET}"
+flatpak install com.usebottles.bottles
+
+echo "${TAG} ${BLUE}Installing resources monitor${RESET}"
+flatpak install net.nokyan.Resources  

@@ -9,6 +9,6 @@ case "$chosen" in
 	"  Power Off") systemctl poweroff ;;
 	"  Restart") systemctl reboot ;;
 # 	"  Hibernate") systemctl hibernate ;;
-	"  Log Out") hyprctl dispatch exit 0 ;;
+	"  Log Out") hyprctl dispatch 'hl.dsp.exit()' ;;
 	*) exit 1 ;;
 esac

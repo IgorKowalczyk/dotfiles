@@ -77,7 +77,7 @@ hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcursor")
 -- NVIDIA https://wiki.hyprland.org/Nvidia/
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
-hl.env("AQ_DRM_DEVICES", "/dev/dri/card0:/dev/dri/card1*")
+hl.env("AQ_DRM_DEVICES", "/dev/dri/card0:/dev/dri/card1")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -268,9 +268,9 @@ hl.gesture({
 ---------------------
 -- See https://wiki.hypr.land/Configuring/Basics/Binds/
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
-
-local smw = hl.plugin.split_monitor_workspaces -- Plugin for managing workspace
-local hyprexpo = hl.plugin.hyprexpo -- Plugin for workspace overview
+package.path = package.path .. ";" .. os.getenv("HOME") .. "/.config/hypr/plugins/split-monitor-workspaces/lua/?.lua"
+local smw = require("split-monitor-workspaces") -- Plugin for managing workspace
+-- local hyprexpo = hl.plugin.hyprexpo -- Plugin for workspace overview
 
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))              -- Open terminal
 hl.bind(mainMod .. " + C", hl.dsp.window.close())                  -- Close app
@@ -285,10 +285,11 @@ hl.bind("PRINT", hl.dsp.exec_cmd(screenshot))                     -- Screenshot
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
-for i = 0, 5 do
-    local key = tostring(i)
-    hl.bind(mainMod .. " + " .. key, function() return smw.workspace(i) end)
-    hl.bind(mainMod .. " + SHIFT + " .. key, function() return smw.move_to_workspace_silent(i) end)
+for i = 1, smw.get_amount_of_workspaces() do
+    local n = tostring(i)
+    if n == "10" then n = "0" end 
+    hl.bind(mainMod .. " +" .. n, smw.workspace(n))
+    hl.bind(mainMod .. " + SHIFT +" .. n, smw.move_to_workspace_silent(n))
 end
 
 hl.bind(mainMod .. " + mouse_down",  hl.dsp.focus({ workspace = "e+1" }))
@@ -326,7 +327,7 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(clipboard))
 
 -- Hyprexpo plugin
-hl.bind("SUPER + g", function() hyprexpo.expo("toggle") end)
+-- hl.bind("SUPER + g", function() hyprexpo.expo("toggle") end)
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
@@ -417,58 +418,47 @@ hl.window_rule({
 hl.window_rule({
   match = { title = "^(Picture-in-Picture|Picture in picture)(.*)$" },
   float  = true,
+  tile = false,
   pin    = true,
+  suppress_event = "activatefocus",
   size   = { "10%", "10%" }, -- 10% of monitor in both directions
+  move = {"monitor_w - window_w - 50", "monitor_h - window_h - 50"}
 })
 
 hl.window_rule({
   match = { class = "cs2" }, immediate = true
 })
 
+smw.setup({
+  workspace_count = 5,
+  keep_focused = false,
+  enable_notifications = false,
+  enable_persistent_workspaces = true,
+  enable_wrapping              = true,
+  link_monitors                = false
+})
+  
 hl.config({
     plugin = {
-        hyprexpo = {
-            columns = 3,
-            gap_size = 5,
-            bg_col = "rgb(111111)",
-            workspace_method = "center current",
-            skip_empty = false,
-            gesture_distance = 300,
-        },
-    },
+        dynamic_cursors = {
+            mode = "tilt",
+
+            tilt = {
+                limit = 20000
+            },
+
+            shake = {
+                enabled = true,
+                threshold = 4.0,
+                limit = 2.5
+            },
+
+            hyprcursor = {
+                nearest = true,
+                enabled = true,
+                resolution = -1,
+                fallback = "clientside"
+            }
+        }
+    }
 })
-
-hl.config({
-    plugin = {
-        split_monitor_workspaces = {
-            count                        = 5,
-            keep_focused                 = 0,
-            enable_notifications         = 0,
-            enable_persistent_workspaces = true,
-            enable_wrapping              = true,
-            link_monitors                = true,
-        },
-    },
-})
-
--- https://github.com/VirtCode/hypr-dynamic-cursors/pull/139
--- plugin:dynamic-cursors {
---   mode = tilt
-  
---   tilt {
---     limit = 20000
---   }
-
---   shake {
---     enabled = true
---     threshold = 4.0
---     limit = 2.5
---   }
-  
---   hyprcursor {
---     nearest = true
---     enabled = true
---     resolution = -1
---     fallback = clientside
---   }
--- }
