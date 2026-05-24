@@ -97,8 +97,7 @@ hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
 hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
 hl.permission("/usr/(bin|local/bin)/hyprlock", "plugin", "allow")
-
-
+hl.permission("/usr/(bin|local/bin)/hyprpicker", "screencopy", "allow")
 -----------------------
 ---- LOOK AND FEEL ----
 -----------------------
@@ -371,73 +370,73 @@ hl.window_rule({
 
 -- Pinned windows: custom border color
 hl.window_rule({
-  match       = { pin = true },
-  border_color = "rgba(ffabf1AA) rgba(ffabf177)",
+    match       = { pin = true },
+    border_color = "rgba(ffabf1AA) rgba(ffabf177)",
 })
 
 -- Open File dialogs
 hl.window_rule({
-  match = { title = "^(Open File)(.*)$" },
-  float  = true,
-  size   = { "50%", "50%" },
-  center = true,
+    match = { title = "^(Open File)(.*)$" },
+    float  = true,
+    size   = { "50%", "50%" },
+    center = true,
 })
 
 -- All Files dialog
 hl.window_rule({
-  match = { title = "^(All Files)(.*)$" },
-  float  = true,
-  size   = { "50%", "50%" },
-  center = true,
+    match = { title = "^(All Files)(.*)$" },
+    float  = true,
+    size   = { "50%", "50%" },
+    center = true,
 })
 
 -- Select a File dialog
 hl.window_rule({
-  match = { title = "^(Select a File)(.*)$" },
-  float  = true,
-  size   = { "50%", "50%" },
-  center = true,
+    match = { title = "^(Select a File)(.*)$" },
+    float  = true,
+    size   = { "50%", "50%" },
+    center = true,
 })
 
 -- Open Folder dialog
 hl.window_rule({
-  match = { title = "^(Open Folder)(.*)$" },
-  float  = true,
-  size   = { "50%", "50%" },
-  center = true,
+    match = { title = "^(Open Folder)(.*)$" },
+    float  = true,
+    size   = { "50%", "50%" },
+    center = true,
 })
 
 -- Save As dialog
 hl.window_rule({
-  match = { title = "^(Save As)(.*)$" },
-  float  = true,
-  size   = { "50%", "50%" },
-  center = true,
+    match = { title = "^(Save As)(.*)$" },
+    float  = true,
+    size   = { "50%", "50%" },
+    center = true,
 })
 
 hl.window_rule({
-  match = { title = "^(Picture-in-Picture|Picture in picture)(.*)$" },
-  float  = true,
-  tile = false,
-  pin    = true,
-  suppress_event = "activatefocus",
-  size   = { "10%", "10%" }, -- 10% of monitor in both directions
-  move = {"monitor_w - window_w - 50", "monitor_h - window_h - 50"}
+    match = { title = "^(Picture-in-Picture|Picture in picture)(.*)$" },
+    float  = true,
+    tile = false,
+    pin    = true,
+    suppress_event = "activatefocus",
+    size   = { "10%", "10%" }, -- 10% of monitor in both directions
+    move = {"monitor_w - window_w - 50", "monitor_h - window_h - 50"}
 })
 
 hl.window_rule({
-  match = { class = "cs2" }, immediate = true
+    match = { class = "cs2" }, immediate = true
 })
 
 smw.setup({
-  workspace_count = 5,
-  keep_focused = false,
-  enable_notifications = false,
-  enable_persistent_workspaces = true,
-  enable_wrapping              = true,
-  link_monitors                = false
+    workspace_count = 5,
+    keep_focused = false,
+    enable_notifications = false,
+    enable_persistent_workspaces = true,
+    enable_wrapping              = true,
+    link_monitors                = false
 })
-  
+
 hl.config({
     plugin = {
         dynamic_cursors = {

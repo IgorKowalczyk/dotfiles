@@ -9,7 +9,7 @@ TAG=$(printf '\033[0;34m[Pre-Install]\033[0m')
 echo "${TAG} ${BLUE}Installing required packages for Fedora${RESET}"
 sudo dnf copr enable lionheartp/Hyprland -y
 sudo dnf install 'dnf-command(config-manager)' -y
-sudo dnf install -y gh zsh gcc g++ git curl wofi waybar dunst fastfetch nmtui kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste dunstify gamemode restic gtk-murrine-engine sassc
+sudo dnf install -y gh zsh gcc g++ git curl wofi waybar dunst fastfetch nmtui blueman kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste dunstify gamemode restic gtk-murrine-engine sassc
 sudo dnf install -y hyprland hyprshot hyprpaper hyprlock hyprsunset hyprland-qt-support hyprland-guiutils hyprpolkitagent
 sudo dnf install -y hyprutils-devel hyprcursor-devel hyprlang-devel aquamarine-devel hyprgraphics-devel hyprwayland-scanner-devel hyprwire-devel hyprland-protocols-devel
 sudo dnf install -y tomlplusplus-devel xcb-util-wm-devel xcb-util-errors-devel lua-devel libxkbcommon-devel libuuid-devel wayland-devel wayland-protocols-devel cairo-devel pango-devel pixman-devel libXcursor-devel libinput-devel mesa-libgbm-devel glib2-devel re2-devel muParser-devel lcms2-devel muParser-devel
@@ -133,3 +133,17 @@ flatpak install com.usebottles.bottles
 
 echo "${TAG} ${BLUE}Installing resources monitor${RESET}"
 flatpak install net.nokyan.Resources  
+
+if [ ! -d "$HOME/.local/share/icons/rose-pine-hyprcursor" ]; then
+  echo "${TAG} ${BLUE}Clonning rose-pine-hyprcursor${RESET}"
+  git clone https://github.com/ndom91/rose-pine-hyprcursor.git --depth 1 "$HOME/.local/share/icons/rose-pine-hyprcursor"
+
+  if [ ! -d "/usr/share/icons/rose-pine-hyprcursor" ]; then
+    echo "${TAG} ${BLUE}Linking rose-pine-hyprcursor to /usr/share/icons${RESET}"
+    sudo ln -s "$HOME/.local/share/icons/rose-pine-hyprcursor" "/usr/share/icons/rose-pine-hyprcursor"
+  else
+    echo "${TAG} ${GREEN}Cursor theme is already linked${RESET}"
+  fi
+else
+  echo "${TAG} ${GREEN}Cursor theme is already installed${RESET}"
+fi
