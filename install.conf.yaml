@@ -32,6 +32,8 @@
    ~/.config/waybar: "config/waybar"
    ~/.config/wofi: "config/wofi"
    ~/.config/zed: "config/zed"
+   ~/.config/gtk-3.0/settings.ini: "config/gtk-3.0/settings.ini"
+   ~/.config/gtk-4.0/settings.ini: "config/gtk-4.0/settings.ini"
    ~/.zshrc:
     force: true
     path: "zsh/zshrc"

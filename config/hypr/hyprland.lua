@@ -69,6 +69,11 @@ end)
 hl.env("GTK_THEME", "Catppuccin-Lavender-Dark-Macchiato")
 hl.env("HYPRCURSOR_SIZE", "28")
 hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcursor")
+
+hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
+hl.env("QT_STYLE_OVERRIDE", "kvantum")
+
+
 -- hl.env("QT_STYLE_OVERRIDE", "kvantum") -- Qt: Application theme override
 -- hl.env("QT_QPA_PLATFORMTHEME", "qt6ct") -- Qt: application theme
 -- hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1") -- Disables window decorations on Qt applications

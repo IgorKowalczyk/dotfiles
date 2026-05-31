@@ -9,7 +9,7 @@ TAG=$(printf '\033[0;34m[Pre-Install]\033[0m')
 echo "${TAG} ${BLUE}Installing required packages for Fedora${RESET}"
 sudo dnf copr enable lionheartp/Hyprland -y
 sudo dnf install 'dnf-command(config-manager)' -y
-sudo dnf install -y gh zsh gcc g++ git curl wofi waybar dunst fastfetch nmtui blueman kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste dunstify gamemode restic gtk-murrine-engine sassc
+sudo dnf install -y gh zsh gcc g++ git curl adw-gtk3-theme wofi waybar dunst fastfetch nmtui blueman kvantum-qt5 pamixer btop swappy cliphist pavucontrol nm-applet ptyxis wl-paste dunstify gamemode restic gtk-murrine-engine sassc
 sudo dnf install -y hyprland hyprshot hyprpaper hyprlock hyprsunset hyprland-qt-support hyprland-guiutils hyprpolkitagent
 sudo dnf install -y hyprutils-devel hyprcursor-devel hyprlang-devel aquamarine-devel hyprgraphics-devel hyprwayland-scanner-devel hyprwire-devel hyprland-protocols-devel
 sudo dnf install -y tomlplusplus-devel xcb-util-wm-devel xcb-util-errors-devel lua-devel libxkbcommon-devel libuuid-devel wayland-devel wayland-protocols-devel cairo-devel pango-devel pixman-devel libXcursor-devel libinput-devel mesa-libgbm-devel glib2-devel re2-devel muParser-devel lcms2-devel muParser-devel
@@ -121,9 +121,22 @@ echo "${TAG} ${BLUE}Clonning Catppuccin-GTK-Theme${RESET}"
 git clone https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme.git --depth 1 "$HOME/Downloads/Catppuccin-gtk"
 
 echo "${TAG} ${BLUE}Installing Catppuccin-GTK-Theme${RESET}"
-sudo sh $HOME/Downloads/Catppuccin-gtk/themes/install.sh -l -t lavender -c dark -s standard --tweaks macos black macchiato
+sudo mkdir $HOME/.themes
+sh $HOME/Downloads/Catppuccin-gtk/themes/install.sh -l -t lavender -c dark -s standard --tweaks macos black macchiato
+
+ln -sf ~/.themes/Catppuccin*/gtk-4.0/assets ~/.config/gtk-4.0/assets
+ln -sf ~/.themes/Catppuccin*/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
+ln -sf ~/.themes/Catppuccin*/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
 
 sudo flatpak override --env=GTK_THEME=Catppuccin-Lavender-Dark-Macchiato
+sudo flatpak override --filesystem=~/.themes
+sudo flatpak override --filesystem=/usr/share/themes
+
+sudo flatpak override --filesystem=xdg-config/gtk-4.0
+flatpak override --user --filesystem=xdg-config/gtk-4.0
+
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark' && gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
 
 echo "${TAG} ${BLUE}Cleaning Catppuccin-GTK-Theme${RESET}"
 rm "$HOME/Downloads/Catppuccin-gtk" -fr
